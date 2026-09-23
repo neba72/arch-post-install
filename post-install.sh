@@ -149,7 +149,26 @@ if [ ${#AUR_PKGS[@]} -gt 0 ]; then
     yay -S --needed --noconfirm "${AUR_PKGS[@]}"
 fi
 
-# 10. Omogućavanje i pokretanje ključnih sistemskih servisa
+# 10. Konfiguracija Snapper-a za root (/)
+echo "[+] Konfiguracija Snapper-a..."
+if [ ! -d "/.snapshots" ]; then
+    # Stvaranje Snapper konfiguracije za root particiju
+    sudo snapper -c root create-config /
+    
+    # Prilagodba prava pristupa kako bi korisnik u 'wheel' grupi mogao čitati snapshotove
+    sudo chmod a+rx /.snapshots
+    sudo chown -R :wheel /.snapshots
+    
+    # Omogućavanje automatskog čišćenja starih snapshotova (timeline i cleanup timers)
+    sudo systemctl enable --now snapper-timeline.timer
+    sudo systemctl enable --now snapper-cleanup.timer
+    
+    echo "[+] Snapper je uspješno konfiguriran!"
+else
+    echo "[+] Snapper konfiguracija za root već postoji."
+fi
+
+# 11. Omogućavanje i pokretanje ključnih sistemskih servisa
 echo "[+] Omogućavanje sistemskih servisa..."
 sudo systemctl enable --now NetworkManager.service
 sudo systemctl enable --now PipeWire.service 2>/dev/null || true
