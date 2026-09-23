@@ -100,13 +100,12 @@ PACMAN_PKGS=(
 # ---> Dodajte ili izbacite AUR pakete po želji <---
 AUR_PKGS=(
     #visual-studio-code-bin
-    #spotify
+    spotify
     #brave-bin
     tokyonight-gtk-theme-git
     bibata-cursor-theme
     nmrs
     zsh-theme-powerlevel10k
-    spotify
     wlogout
 )
 
