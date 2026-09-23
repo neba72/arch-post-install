@@ -82,7 +82,6 @@ PACMAN_PKGS=(
     noto-fonts-emoji
     imv
     mpv
-    spotify
     rofi
     nwg-look
     gnome-themes-extra
@@ -90,7 +89,6 @@ PACMAN_PKGS=(
     stow
     pacman-contrib
     gum
-    wlogout
     yazi
     zoxide
     fzf
@@ -108,6 +106,8 @@ AUR_PKGS=(
     bibata-cursor-theme
     nmrs
     zsh-theme-powerlevel10k
+    spotify
+    wlogout
 )
 
 # 4. Ažuriranje sistema
