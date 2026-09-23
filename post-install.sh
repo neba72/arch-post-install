@@ -155,15 +155,20 @@ if [ ! -d "/.snapshots" ]; then
     # Stvaranje Snapper konfiguracije za root particiju
     sudo snapper -c root create-config /
     
-    # Prilagodba prava pristupa kako bi korisnik u 'wheel' grupi mogao čitati snapshotove
+    # Prilagodba prava pristupa
     sudo chmod a+rx /.snapshots
     sudo chown -R :wheel /.snapshots
     
-    # Omogućavanje automatskog čišćenja starih snapshotova (timeline i cleanup timers)
-    sudo systemctl enable --now snapper-timeline.timer
+    # Isključivanje automatskog satnog (timeline) stvaranja snapshotova
+    sudo sed -i 's/^TIMELINE_CREATE="yes"/TIMELINE_CREATE="no"/' /etc/snapper/configs/root
+    
+    # Zadržavamo samo cleanup timer (da bi brisao stare snap-pac snapshotove po kvoti)
     sudo systemctl enable --now snapper-cleanup.timer
     
-    echo "[+] Snapper je uspješno konfiguriran!"
+    # Osiguravamo da je timeline timer onemogućen
+    sudo systemctl disable --now snapper-timeline.timer 2>/dev/null || true
+    
+    echo "[+] Snapper je konfiguriran (vremenski snapshotovi isključeni)!"
 else
     echo "[+] Snapper konfiguracija za root već postoji."
 fi
