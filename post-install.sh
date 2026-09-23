@@ -103,7 +103,7 @@ AUR_PKGS=(
     spotify
     #brave-bin
     tokyonight-gtk-theme-git
-    bibata-cursor-theme
+    bibata-cursor-theme-bin
     nmrs
     zsh-theme-powerlevel10k
     wlogout
