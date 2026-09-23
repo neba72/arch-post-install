@@ -37,12 +37,12 @@ PACMAN_PKGS=(
     wireplumber
     
     # Aplikacije i Radno okruženje
-    kitty               # Terminal
-    firefox             # Web preglednik
-    neovim              # Tekstualni editor
-    vlc                 # Media player
-    thunar              # Fajl menadžer
-    ttf-jet-brains-mono # Fontovi
+    kitty                   # Terminal
+    firefox                 # Web preglednik
+    neovim                  # Tekstualni editor
+    vlc                     # Media player
+    thunar                  # Fajl menadžer
+    ttf-jetbrains-mono-nerd # Fontovi
 )
 
 # 3. Definisanje liste AUR paketa (yay)
