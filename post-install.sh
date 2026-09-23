@@ -18,16 +18,46 @@ fi
 PACMAN_PKGS=(
     # Osnovni sistemski alati
     git
+    github-cli
     curl
     wget
     fastfetch
     htop
+    btop
     unzip
     zip
+    usbutils
+    xdg-desktop-portal-hyprland
+    hyprpolkitagent
+    qt5-wayland
+    qt6-wayland
+    gvfs-smb
+    qt6ct
+    hyprlock
+    hypridle
+    awww
+    snapper
+    snap-pac
+    gnome-keyring
+    seahorse
+    libsecret
+
+    # for zsh
+    zsh
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    eza
+    bat
+
+    # Clipboard
+    cliphist
+    wl-clip-persist
+    wl-clipboard
     
     # Grafičko okruženje / Display Manager (Primjer: Hyprland / KDE / XFCE - otkomentarišite po izboru)
     # xorg-server
     # sddm
+    hyprland
     
     # Mreža i Zvuk
     networkmanager
@@ -35,22 +65,49 @@ PACMAN_PKGS=(
     pipewire-pulse
     pipewire-alsa
     wireplumber
+    pavucontrol
     
     # Aplikacije i Radno okruženje
     kitty                   # Terminal
     firefox                 # Web preglednik
     neovim                  # Tekstualni editor
+    fd 
+    ripgrep
+    luarocks
     vlc                     # Media player
-    thunar                  # Fajl menadžer
+    nemo                    # Fajl menadžer
     ttf-jetbrains-mono-nerd # Fontovi
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    imv
+    mpv
+    spotify
+    rofi
+    nwg-look
+    gnome-themes-extra
+    waybar
+    stow
+    pacman-contrib
+    gum
+    wlogout
+    yazi
+    zoxide
+    fzf
+    7zip
+    
 )
 
 # 3. Definisanje liste AUR paketa (yay)
 # ---> Dodajte ili izbacite AUR pakete po želji <---
 AUR_PKGS=(
-    visual-studio-code-bin
-    spotify
-    brave-bin
+    #visual-studio-code-bin
+    #spotify
+    #brave-bin
+    tokyonight-gtk-theme-git
+    bibata-cursor-theme
+    nmrs
+    zsh-theme-powerlevel10k
 )
 
 # 4. Ažuriranje sistema
