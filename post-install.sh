@@ -121,7 +121,16 @@ sudo pacman -S --needed --noconfirm base-devel git
 echo "[+] Instalacija odabranih Pacman paketa..."
 sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
 
-# 7. Instalacija yay (AUR pomoćnika) ako već nije instaliran
+# 7. Postavljanje Zsh kao podrazumijevanog shell-a
+echo "[+] Postavljanje Zsh kao osnove za korisnika '$USER'..."
+if [ "$SHELL" != "$(which zsh)" ]; then
+    sudo chsh -s "$(which zsh)" "$USER"
+    echo "[+] Podrazumijevani shell je uspješno promijenjen na Zsh."
+else
+    echo "[+] Zsh je već vaš podrazumijevani shell."
+fi
+
+# 8. Instalacija yay (AUR pomoćnika) ako već nije instaliran
 if ! command -v yay &> /dev/null; then
     echo "[+] 'yay' nije pronađen. Započinjem instalaciju yay-a iz AUR-a..."
     BUILD_DIR=$(mktemp -d)
@@ -134,13 +143,13 @@ else
     echo "[+] 'yay' je već instaliran."
 fi
 
-# 8. Instalacija AUR paketa
+# 9. Instalacija AUR paketa
 if [ ${#AUR_PKGS[@]} -gt 0 ]; then
     echo "[+] Instalacija odabranih AUR paketa putem yay-a..."
     yay -S --needed --noconfirm "${AUR_PKGS[@]}"
 fi
 
-# 9. Omogućavanje i pokretanje ključnih sistemskih servisa
+# 10. Omogućavanje i pokretanje ključnih sistemskih servisa
 echo "[+] Omogućavanje sistemskih servisa..."
 sudo systemctl enable --now NetworkManager.service
 sudo systemctl enable --now PipeWire.service 2>/dev/null || true
